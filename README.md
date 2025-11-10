@@ -6,7 +6,7 @@ This is the work repository for Github Copilot Workshop in Github Universe Recap
 
 We are going to create Pomodoro web application using Python, JavaScript, HTML, and CSS.
 
-## Getting started
+## Getting started with `uv` and `venv`
 
 ### uv
 
@@ -23,12 +23,4 @@ Activate `venv`:
 ```bash
 # activate venv
 source .venv/bin/activate
-```
-
-### Dependencies
-
-Install dependencies for the Pomodoro web app.
-
-```bash
-uv pip install fastapi
 ```
