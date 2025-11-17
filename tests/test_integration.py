@@ -220,6 +220,24 @@ class TestWebInterface:
         
         # The page should be serve-able without errors
         assert response.headers.get('Content-Type', '').startswith('text/html')
+        
+        # Check for new customization UI elements
+        assert 'settingsBtn' in content  # Settings button
+        assert 'themeBtn' in content  # Theme button
+        assert 'settingsPanel' in content  # Settings panel
+        assert 'focusDuration' in content  # Focus duration selector
+        assert 'breakDuration' in content  # Break duration selector
+        assert 'soundStart' in content  # Start sound checkbox
+        assert 'soundEnd' in content  # End sound checkbox
+        assert 'soundTick' in content  # Ticking sound checkbox
+        
+        # Check for duration options
+        assert '15 minutes' in content
+        assert '25 minutes' in content
+        assert '35 minutes' in content
+        assert '45 minutes' in content
+        assert '5 minutes' in content
+        assert '10 minutes' in content
     
     @pytest.mark.integration  
     def test_api_json_responses(self, client):
