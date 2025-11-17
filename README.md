@@ -8,10 +8,12 @@ A beautiful, modern web-based Pomodoro timer built with Flask backend and vanill
 
 - **25-minute Pomodoro Timer**: Classic 25-minute focus sessions
 - **Visual Progress**: Elegant circular progress bar with smooth animations
+- **Enhanced Visual Feedback**: Floating particles and ripple effects during active sessions
+- **Dynamic Color Changes**: Progress ring changes color based on timer state (idle/running/completed)
 - **Session Tracking**: Automatic logging of completed sessions
 - **Daily Statistics**: View your daily progress (sessions completed and focus time)
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Clean UI**: Modern, distraction-free interface
+- **Clean UI**: Modern, distraction-free interface with contextual animations
 - **RESTful API**: Backend API for session management
 
 ## 🚀 Getting Started
@@ -77,10 +79,10 @@ pomodoro-app/
 ├── app.py                 # Flask backend with API endpoints
 ├── requirements.txt       # Python dependencies
 ├── static/
-│   ├── style.css         # UI styles and animations
-│   └── timer.js          # Timer logic and API communication
+│   ├── style.css         # UI styles with particle/ripple animations
+│   └── timer.js          # Timer logic with visual effects system
 ├── templates/
-│   └── index.html        # Main HTML template
+│   └── index.html        # Main HTML template with visual effects containers
 ├── tests/
 │   └── test_app.py       # Backend API tests
 ├── pomodoro.log          # Session history (auto-generated)
@@ -280,24 +282,28 @@ python -m pytest tests/ --pdb
 This project was built with modern web development practices:
 
 - **Backend**: Flask (Python) - Lightweight and efficient
-- **Frontend**: Vanilla JavaScript - No framework dependencies
-- **Styling**: CSS3 with animations and responsive design
+- **Frontend**: Vanilla JavaScript - No framework dependencies, includes visual effects system
+- **Styling**: CSS3 with particle animations, ripple effects, and responsive design
+- **Visual Effects**: Performance-optimized particle system and dynamic color transitions
 - **Storage**: File-based logging (JSON format)
 - **Testing**: pytest with comprehensive test coverage
 
 ### Key Components
 
 1. **SessionLogger Class**: Handles file-based session persistence
-2. **PomodoroTimer Class**: JavaScript timer logic with state management
-3. **Circular Progress**: SVG-based progress visualization
-4. **Responsive Design**: Mobile-first CSS approach
+2. **PomodoroTimer Class**: JavaScript timer logic with state management and visual effects
+3. **Circular Progress**: SVG-based progress visualization with dynamic color changes
+4. **Visual Effects System**: Particle generation and ripple animations
+5. **Responsive Design**: Mobile-first CSS approach with performance-optimized animations
 
 ## 📱 Browser Support
 
-- ✅ Chrome/Chromium 70+
-- ✅ Firefox 65+
-- ✅ Safari 12+
-- ✅ Edge 79+
+- ✅ Chrome/Chromium 70+ (Full visual effects support)
+- ✅ Firefox 65+ (Full visual effects support)
+- ✅ Safari 12+ (Full visual effects support)
+- ✅ Edge 79+ (Full visual effects support)
+
+**Note**: Visual effects (particles and ripples) use modern CSS animations and transforms. Older browsers will gracefully degrade to basic functionality.
 
 ## 📄 License
 
