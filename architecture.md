@@ -7,19 +7,23 @@ This document summarizes the proposed architecture for the Pomodoro timer web ap
 ## 1. Frontend (HTML/CSS/JavaScript)
 
 ### Responsibilities:
-- Display the Pomodoro timer UI, including circular progress, session timer, and stats (“Today's Progress”).
+- Display the Pomodoro timer UI, including circular progress, session timer, and stats ("Today's Progress").
 - Implement countdown timer and progress animation fully in JavaScript on the client.
+- Provide enhanced visual feedback through particle effects and ripple animations during active sessions.
 - Handle user interactions: Start and Reset buttons.
 - Fetch and display progress data (sessions completed, focus time) from the backend via AJAX.
+- Manage dynamic color transitions and contextual visual effects based on timer state.
 
 ### Technologies:
-- **HTML/CSS:** UI structure and styling (including circular progress using SVG or Canvas).
-- **Vanilla JavaScript:** Timer logic, UI interactivity, and API communication.
+- **HTML/CSS:** UI structure and styling (including circular progress using SVG and CSS animations for particles/ripples).
+- **Vanilla JavaScript:** Timer logic, UI interactivity, visual effects system, and API communication.
 
 ### UI Elements:
-- Circular timer progress bar and countdown display.
-- Start/Reset buttons.
-- Area showing today’s completed count and focus minutes.
+- Circular timer progress bar with dynamic color changes and countdown display.
+- Start/Reset buttons with hover animations.
+- Area showing today's completed count and focus minutes.
+- Floating particle effects during active timer sessions.
+- Concentric ripple animations emanating from the center during sessions.
 
 ---
 

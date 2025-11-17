@@ -25,6 +25,7 @@ class PomodoroTimer {
         this.isBreak = false;
         this.intervalId = null;
         this.tickAudioInterval = null;
+        this.particleIntervalId = null;
         
         // UI Elements
         this.timeDisplay = document.getElementById('timeRemaining');
@@ -34,6 +35,7 @@ class PomodoroTimer {
         this.progressRingBar = document.querySelector('.progress-ring-bar');
         this.sessionsCount = document.getElementById('sessionsCount');
         this.focusMinutes = document.getElementById('focusMinutes');
+        this.particlesContainer = document.getElementById('particlesContainer');
         
         // Settings UI Elements
         this.settingsBtn = document.getElementById('settingsBtn');
@@ -215,6 +217,9 @@ class PomodoroTimer {
             }, 1000);
         }
         
+        // Start particle effects
+        this.startParticles();
+        
         this.intervalId = setInterval(() => {
             this.timeRemaining--;
             this.updateUI();
@@ -241,6 +246,9 @@ class PomodoroTimer {
             clearInterval(this.tickAudioInterval);
             this.tickAudioInterval = null;
         }
+        
+        // Stop particle effects
+        this.stopParticles();
     }
     
     resetTimer() {
@@ -271,6 +279,9 @@ class PomodoroTimer {
             this.tickAudioInterval = null;
         }
         
+        // Stop particle effects
+        this.stopParticles();
+        
         this.updateUI();
     }
     
@@ -291,6 +302,9 @@ class PomodoroTimer {
             clearInterval(this.tickAudioInterval);
             this.tickAudioInterval = null;
         }
+        
+        // Stop particle effects
+        this.stopParticles();
         
         // Play completion sound
         this.playSound('end');
@@ -390,6 +404,50 @@ class PomodoroTimer {
                 icon: '/static/favicon.ico'
             });
         }
+    }
+    
+    startParticles() {
+        // Generate particles periodically
+        this.particleIntervalId = setInterval(() => {
+            this.createParticle();
+        }, 200); // Create a new particle every 200ms
+    }
+    
+    stopParticles() {
+        if (this.particleIntervalId) {
+            clearInterval(this.particleIntervalId);
+            this.particleIntervalId = null;
+        }
+        // Clear existing particles
+        if (this.particlesContainer) {
+            this.particlesContainer.innerHTML = '';
+        }
+    }
+    
+    createParticle() {
+        if (!this.particlesContainer) return;
+        
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random position
+        particle.style.left = Math.random() * 100 + '%';
+        
+        // Random animation duration
+        const duration = 4 + Math.random() * 4; // 4-8 seconds
+        particle.style.animationDuration = duration + 's';
+        
+        // Random size
+        const size = 2 + Math.random() * 4; // 2-6px
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        this.particlesContainer.appendChild(particle);
+        
+        // Remove particle after animation completes
+        setTimeout(() => {
+            particle.remove();
+        }, duration * 1000);
     }
 }
 

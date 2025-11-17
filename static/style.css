@@ -28,6 +28,8 @@ body {
     justify-content: center;
     color: var(--text-color);
     transition: background 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Dark Mode Theme */
@@ -74,6 +76,8 @@ body.theme-focus header h1 {
     min-width: 400px;
     max-width: 500px;
     transition: background 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 header {
@@ -356,6 +360,106 @@ header h1 {
 
 .timer-completed .progress-ring-bar {
     stroke: #26de81;
+}
+
+/* Particle Effects */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.timer-running .particles-container {
+    opacity: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Ripple Effect */
+.ripple-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.timer-running .ripple-container {
+    opacity: 0.3;
+}
+
+.ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: ripple-expand 4s ease-out infinite;
+}
+
+.ripple:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.ripple:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.ripple:nth-child(4) {
+    animation-delay: 3s;
+}
+
+@keyframes ripple-expand {
+    0% {
+        width: 0;
+        height: 0;
+        margin-left: 0;
+        margin-top: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 800px;
+        height: 800px;
+        margin-left: -400px;
+        margin-top: -400px;
+        opacity: 0;
+    }
 }
 
 /* Responsive Design */

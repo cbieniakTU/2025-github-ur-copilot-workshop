@@ -16,10 +16,10 @@ The Pomodoro Timer is a web-based productivity application that helps users mana
 ```
 ├── app.py              # Flask backend application
 ├── templates/
-│   └── index.html      # Main HTML template
+│   └── index.html      # Main HTML template with visual effects containers
 ├── static/
-│   ├── style.css       # Application styles
-│   └── timer.js        # Frontend JavaScript logic
+│   ├── style.css       # Application styles with particle/ripple animations
+│   └── timer.js        # Frontend JavaScript logic with visual effects system
 ├── tests/
 │   └── test_app.py     # Unit tests
 └── pomodoro.log        # Session data storage (created at runtime)
@@ -42,6 +42,13 @@ The Pomodoro Timer is a web-based productivity application that helps users mana
 - **Responsive Design**: Mobile-friendly layout
 - **Visual States**: Different colors for idle, running, and completed states
 - **Notifications**: Browser notifications for session completion (when permitted)
+
+### 4. Enhanced Visual Feedback
+- **Particle Effects**: Floating animated particles during active timer sessions
+- **Ripple Animations**: Concentric ripple effects emanating from the center during sessions
+- **Dynamic Color Transitions**: Progress ring changes color based on timer state (idle: red, running: teal, completed: green)
+- **Smooth Animations**: CSS transitions for button hovers, progress updates, and state changes
+- **Background Effects**: Contextual visual effects that activate only during timer sessions
 
 ## API Endpoints
 
@@ -174,10 +181,12 @@ sequenceDiagram
 ## Component Interactions
 
 ### Frontend Components
-- **PomodoroTimer Class**: Main controller managing timer state
+- **PomodoroTimer Class**: Main controller managing timer state and visual effects
 - **UI Elements**: DOM manipulation for display updates
 - **API Client**: Fetch-based communication with backend
-- **Progress Ring**: SVG circle with animated stroke-dashoffset
+- **Progress Ring**: SVG circle with animated stroke-dashoffset and dynamic color changes
+- **Particle System**: Dynamic particle generation and animation management
+- **Visual Effects Controller**: Manages ripple effects, color transitions, and background animations
 
 ### Backend Components
 - **Flask App**: HTTP request routing and response handling
@@ -195,15 +204,42 @@ sequenceDiagram
 - **Input Validation**: Duration and timestamp parameter validation
 - **Logging**: Structured logging for debugging and monitoring
 
+## Enhanced Visual Feedback System
+
+### Particle Effects
+- **Implementation**: CSS animations with JavaScript-generated DOM elements
+- **Behavior**: Particles float upward with random positions and durations (4-8 seconds)
+- **Activation**: Only during active timer sessions to minimize distraction
+- **Performance**: Automatic cleanup of particles after animation completion
+
+### Ripple Animations
+- **Design**: Four concentric ripples with staggered animation delays
+- **Effect**: Expanding circles from center with opacity fade-out
+- **Duration**: 4-second animation cycle per ripple
+- **Styling**: Semi-transparent white borders for subtle visual impact
+
+### Dynamic Color System
+- **Idle State**: Red (#ff6b6b) - Default Pomodoro color
+- **Running State**: Teal (#4ecdc4) - Active/focused color
+- **Completed State**: Green (#26de81) - Success color
+- **Transitions**: Smooth CSS transitions (0.5s ease-in-out)
+
+### Performance Optimizations
+- **Conditional Rendering**: Effects only activate during timer sessions
+- **Memory Management**: Automatic cleanup of particle elements
+- **CSS Hardware Acceleration**: Transform-based animations for smooth performance
+- **Minimal DOM Impact**: Lightweight particle creation with efficient removal
+
 ## Browser Compatibility
 
 ### Minimum Requirements
 - **JavaScript**: ES6+ support (classes, async/await, fetch API)
-- **CSS**: Flexbox, CSS Grid, SVG support
+- **CSS**: Flexbox, CSS Grid, SVG support, CSS animations and transforms
 - **HTML**: HTML5 semantic elements
 
 ### Progressive Enhancement
 - **Notifications**: Optional browser notification API
+- **Visual Effects**: Graceful degradation for older browsers
 - **Local Storage**: Could be added for offline session caching
 - **Service Worker**: Potential for offline functionality
 
@@ -212,7 +248,9 @@ sequenceDiagram
 ### Frontend Optimization
 - **Timer Updates**: 1-second intervals with minimal DOM manipulation
 - **Progress Ring**: CSS transitions for smooth animations
-- **Memory Management**: Proper cleanup of intervals and event listeners
+- **Visual Effects**: Conditional activation and automatic cleanup
+- **Particle System**: Efficient creation/destruction cycle (200ms intervals)
+- **Memory Management**: Proper cleanup of intervals, event listeners, and DOM elements
 
 ### Backend Optimization
 - **File I/O**: Append-only operations for session logging
@@ -238,7 +276,9 @@ sequenceDiagram
 2. **Custom Durations**: User-configurable session lengths
 3. **Statistics Dashboard**: Weekly/monthly progress charts
 4. **Sound Notifications**: Audio alerts for session completion
-5. **Themes**: Multiple color schemes and visual themes
+5. **Enhanced Themes**: Multiple color schemes, particle styles, and visual themes
+6. **Advanced Animations**: Custom particle shapes, seasonal effects, and user-selectable animations
+7. **Accessibility Options**: Reduced motion settings and visual effect toggles
 
 ### Technical Improvements
 1. **Database Storage**: Replace file-based storage with SQLite/PostgreSQL
