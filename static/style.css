@@ -1,0 +1,233 @@
+/* Pomodoro Timer Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 400px;
+    max-width: 500px;
+}
+
+header h1 {
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.timer-section {
+    margin-bottom: 2rem;
+}
+
+.timer-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.circular-progress {
+    position: relative;
+    display: inline-block;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    stroke: #f3f4f6;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.progress-ring-bar {
+    stroke: #ff6b6b;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.timer-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.time-remaining {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.timer-label {
+    font-size: 1rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.btn-primary {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #f8f9fa;
+    color: #333;
+    border: 2px solid #e9ecef;
+}
+
+.btn-secondary:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.progress-section {
+    border-top: 1px solid #e9ecef;
+    padding-top: 2rem;
+}
+
+.progress-section h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Timer States */
+.timer-running .progress-ring-bar {
+    stroke: #4ecdc4;
+}
+
+.timer-running .btn-primary {
+    background: #4ecdc4;
+}
+
+.timer-running .btn-primary:hover {
+    background: #45b7b8;
+}
+
+.timer-completed .progress-ring-bar {
+    stroke: #26de81;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        min-width: 300px;
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .time-remaining {
+        font-size: 2rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.timer-completed .timer-display {
+    animation: pulse 0.5s ease-in-out;
+}
