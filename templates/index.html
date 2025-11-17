@@ -10,9 +10,55 @@
     <div class="container">
         <header>
             <h1>Pomodoro Timer</h1>
+            <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+            <button id="themeBtn" class="theme-btn" title="Change Theme">🌓</button>
         </header>
         
         <main>
+            <!-- Settings Panel -->
+            <div id="settingsPanel" class="settings-panel hidden">
+                <h3>Settings</h3>
+                
+                <div class="setting-group">
+                    <label for="focusDuration">Focus Duration</label>
+                    <select id="focusDuration" class="setting-select">
+                        <option value="900">15 minutes</option>
+                        <option value="1500" selected>25 minutes</option>
+                        <option value="2100">35 minutes</option>
+                        <option value="2700">45 minutes</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="breakDuration">Break Duration</label>
+                    <select id="breakDuration" class="setting-select">
+                        <option value="300" selected>5 minutes</option>
+                        <option value="600">10 minutes</option>
+                        <option value="900">15 minutes</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group">
+                    <label>Sound Settings</label>
+                    <div class="sound-toggles">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="soundStart" checked>
+                            <span>Start Sound</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="soundEnd" checked>
+                            <span>End Sound</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="soundTick">
+                            <span>Ticking Sound</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="closeSettings" class="btn btn-secondary">Close</button>
+            </div>
+            
             <div class="timer-section">
                 <div class="timer-container">
                     <div class="circular-progress">
@@ -32,7 +78,7 @@
                         </svg>
                         <div class="timer-display">
                             <div class="time-remaining" id="timeRemaining">25:00</div>
-                            <div class="timer-label">Focus Time</div>
+                            <div class="timer-label" id="timerLabel">Focus Time</div>
                         </div>
                     </div>
                 </div>
