@@ -65,7 +65,86 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Gamification Section -->
+            <div class="gamification-section">
+                <!-- Level and XP -->
+                <div class="level-section">
+                    <div class="level-header">
+                        <span class="level-label">Level <span id="levelNumber">1</span></span>
+                        <span class="xp-label"><span id="currentXP">0</span> / <span id="nextLevelXP">100</span> XP</span>
+                    </div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" id="xpBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Streak Tracker -->
+                <div class="streak-section">
+                    <div class="streak-card">
+                        <span class="streak-icon">🔥</span>
+                        <div class="streak-content">
+                            <span class="streak-number" id="streakCount">0</span>
+                            <span class="streak-label">Day Streak</span>
+                        </div>
+                    </div>
+                    <div class="streak-best">
+                        <span class="streak-best-label">Best:</span>
+                        <span class="streak-best-number" id="longestStreak">0</span>
+                    </div>
+                </div>
+                
+                <!-- Achievements -->
+                <div class="achievements-section">
+                    <h2>Achievements</h2>
+                    <div class="achievements-grid" id="achievementsGrid">
+                        <!-- Achievements will be dynamically loaded -->
+                    </div>
+                </div>
+                
+                <!-- Stats Dashboard -->
+                <div class="stats-section">
+                    <h2>Statistics</h2>
+                    <div class="stats-tabs">
+                        <button class="stats-tab active" data-period="weekly">Weekly</button>
+                        <button class="stats-tab" data-period="monthly">Monthly</button>
+                    </div>
+                    <div class="stats-dashboard">
+                        <div class="stat-item">
+                            <span class="stat-value" id="statTotal">0</span>
+                            <span class="stat-name">Total Sessions</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="statAverage">0</span>
+                            <span class="stat-name">Daily Average</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="statCompletionRate">0%</span>
+                            <span class="stat-name">Completion Rate</span>
+                        </div>
+                    </div>
+                    <div class="stats-chart">
+                        <canvas id="statsChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
         </main>
+    </div>
+    
+    <!-- Achievement Unlock Modal -->
+    <div id="achievementModal" class="modal">
+        <div class="modal-content achievement-unlock">
+            <h3>🎉 Achievement Unlocked!</h3>
+            <div id="achievementDetails"></div>
+        </div>
+    </div>
+    
+    <!-- Level Up Modal -->
+    <div id="levelUpModal" class="modal">
+        <div class="modal-content level-up">
+            <h3>⭐ Level Up!</h3>
+            <div id="levelUpDetails"></div>
+        </div>
     </div>
     
     <script src="{{ url_for('static', filename='timer.js') }}"></script>
